@@ -1,10 +1,13 @@
 window.onload = function (){
 
 	var todoList = [];
+	if(localStorage.getItem('todo' )!= undefined){
+		todoList = JSON.parse(localStorage.getItem('todo' ));
+		out();
+	}
 	document.getElementById('add').onclick = function(){
 		var d = document.getElementById('in').value;
 		var desc = document.getElementById('desc').value;
-
 		/*
 		 {todo: Добавить хлеб, check: false, desc: Описание}
 		*/
@@ -17,6 +20,8 @@ window.onload = function (){
 		//todoListd[i] = tempd;
 		console.log(todoList);
 		out();
+
+		localStorage.setItem('todo', JSON.stringify(todoList) );
 	}
 
 	function out(){
